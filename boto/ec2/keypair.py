@@ -35,6 +35,7 @@ class KeyPair(EC2Object):
         self.name = None
         self.fingerprint = None
         self.material = None
+        self.id = None
 
     def __repr__(self):
         return 'KeyPair:%s' % self.name
@@ -46,6 +47,8 @@ class KeyPair(EC2Object):
             self.fingerprint = value
         elif name == 'keyMaterial':
             self.material = value
+        elif name == "keyPairId":
+            self.id = value
         else:
             setattr(self, name, value)
 

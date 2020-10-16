@@ -232,16 +232,7 @@ class TestNetworkInterfaceCollection(unittest.TestCase):
         })
 
     def test_cant_use_public_ip(self):
-        collection = NetworkInterfaceCollection(self.network_interfaces_spec3,
-                                                self.network_interfaces_spec1)
-        params = {}
-
-        # First, verify we can't incorrectly create multiple interfaces with
-        # on having a public IP.
-        with self.assertRaises(BotoClientError):
-            collection.build_list_params(params, prefix='LaunchSpecification.')
-
-        # Next, ensure it can't be on device index 1.
+        # Ensure it can't be on device index 1.
         self.network_interfaces_spec3.device_index = 1
         collection = NetworkInterfaceCollection(self.network_interfaces_spec3)
         params = {}

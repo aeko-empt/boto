@@ -40,7 +40,6 @@ class VPC(TaggedEC2Object):
         :ivar instance_tenancy: The allowed tenancy of instances launched into the VPC.
         :ivar route_propagation: Route propagation information
         :ivar classic_link_enabled: Indicates whether ClassicLink is enabled.
-        :ivar description: Description of the VPC.
         """
         super(VPC, self).__init__(connection)
         self.id = None
@@ -51,7 +50,6 @@ class VPC(TaggedEC2Object):
         self.instance_tenancy = None
         self.route_propagation = None
         self.classic_link_enabled = None
-        self.description = None
 
     def __repr__(self):
         return 'VPC:%s' % self.id
@@ -73,8 +71,6 @@ class VPC(TaggedEC2Object):
             self.route_propagation = value
         elif name == 'classicLinkEnabled':
             self.classic_link_enabled = value
-        elif name == 'description':
-            self.description = value
         else:
             setattr(self, name, value)
 
